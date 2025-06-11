@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>흔적 보관소</title>
+</head>
+<link rel="icon" type="image/png" href="website.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300..700;1,300..700&family=Hahmlet:wght@100..900&display=swap" rel="stylesheet">
+	<style type=text/css>
+	html {
+	  font-family: "Hahmlet", serif;
+	  font-optical-sizing: auto;
+	  font-weight: 100;
+	  font-style: normal;
+	  line-height: 1.7rem;
+	}
+	.cormorant-infant {
+	  font-family: "Cormorant Infant", serif;
+	  font-optical-sizing: auto;
+	  font-weight: 300;
+	  font-style: normal;
+	}
+	@font-face {
+    font-family: 'GowunBatang-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunBatang-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+	}
+	body,h1,h2,p,ol,ul{margin:0;padding:0;overflow-x:hidden}
+	nav{font-family: "Cormorant Infant";color:#0060FF; position: fixed; padding: 10px;position: fixed; top:0;left:0;width:100%;z-index: 1000;transition: all 0.3s ease;display: flex;justify-content: space-between;align-items: center;font-size: 1.2rem;background: linear-gradient(to bottom, #6E768D 0%, #73737300 100%)}
+	li{list-style-type: none}
+	.menu{width: 400px; display: flex;gap: 30px;}
+	li a{text-decoration: none; color:white;padding:3px;margin:2px;display: block;transition: all 0.3s;}
+	.menu a {color: #0060FF;text-decoration: none;font-family: 'Cormorant Infant';font-size: 1.2rem;font-weight: 100;}
+	.menu li a:hover {color: white;transition: all 0.3s;}
+	a {cursor:none}
+	.logo{padding: 5px ;color:#0060FF;}
+	.flex{display: flex;justify-content: space-between;}
+	.black {background: black;color:white;position: relative;}
+	.gray {color: #D9D9D9}
+	.wrap{width:1200px; margin:auto;position: relative;}
+	.wrap2{width:1200px; margin:auto}
+	.wrap3{width:1000px; margin:auto}
+	h1{font-family: "Cormorant Infant";color:#0060FF;font-size: 11rem;font-weight: 100;font-style:italic;padding: 0px 10px 0 0;letter-spacing: -0.03em;text-align:right;line-height: 12rem;overflow: hidden;}
+	h2{font-family: 'GowunBatang-Regular';font-size: 6.5rem;font-weight: normal;
+		;letter-spacing: -0.03em;line-height: 10rem;}
+	p{font-family: "Hahmlet";font-size: 1.2rem;line-height: 1.8;word-break: break-word;}
+	section{padding: 10px 0px;background-color: black;}
+	header{padding:100px 0}
+	.title-wrap {display: flex;gap: 100px;flex-direction: row-reverse; justify-content: space-between;}
+	.title-wrap h2 {padding: 0;margin: 0;text-align: left}
+	.title-wrap p {margin:80px 0 0 30px;font-size: 1rem;line-height: 1.8;max-width: 380px;text-align: left}
+	.bg-pic1{ width: 100%;height: 950px;background: url('comp-4.gif') center center / cover no-repeat; background-attachment: fixed;position: relative;overflow: hidden;color:white}
+	.marquee-wrapper {
+		display:flex;
+      	overflow: hidden;
+     	white-space: nowrap;
+      	background-color: black;
+      	color: white;
+      	font-family: "Cormorant Infant",  monospace; font-style:italic; 
+      	font-size: 1.8rem;
+      	padding:20px 0px;
+      	box-shadow: 0 0px 10px black;
+      	border: solid #2A10DF 1px;
+   	}
+   	.marquee {
+      	display:flex;width: fit-content;
+      	animation: marquee 10s linear infinite;
+   	}
+   	.word-group {
+      	display: inline-block;
+      	margin-right: 30px;
+    }
+    @keyframes marquee {
+    	0% {transform: translateX(0);}
+		 100% {transform: translateX(-100%);}
+	}
+	
+	.highlight {position: relative;display: inline-block;z-index: 0;}
+	.highlight::after {
+		 content: '';
+		 position: absolute;
+		 left: 0;
+		 bottom: 0%; 
+		 width: 100%;
+		 height: 30%;
+		 background: linear-gradient(to top, #0060FF 0%, transparent 100%);
+		 z-index: -1;pointer-events: none;
+	}
+	.iamgradient{position: relative;bottom: 0;left: 0;width: 100%;height: 60px;background: linear-gradient(to bottom, black 10%, #2A10DF);z-index: 1;}
+	.iamgradient2{position: relative;bottom: 0;left: 0;width: 100%;height: 200px;background: linear-gradient(to bottom, black 30%, #2A10DF);z-index: 1;}
+	.enter-button {position: absolute;top: 40%;left: 50%;transform: translate(-50%, -50%);z-index: 3;padding: 8px 18px 10px 18px;font-size: 1.3rem;font-family: 'Hahmlet';font-weight: 200;color: white;background: transparent;border: 0.75px solid white;border-radius: 50px;cursor: none;transition: all 0.3s ease;backdrop-filter: blur(5px);}
+	.enter-button:hover {background: rgba(255, 255, 255, 0.1);color: #ccc;}
+	.transition-overlay {
+		position: fixed;
+		top: 0; left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: black;
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 0.8s ease;
+		z-index: 9999;
+	}
+	.transition-overlay.active {
+		opacity: 1;
+		pointer-events: auto;
+	}
+	.intro-box {
+	  position: absolute;
+	  top: 55%;
+	  left: 50%;
+	  transform: translate(-50%, 220%);
+	  background: rgba(42, 16, 223, 0.1);
+	  border: 0.2px solid white;
+	  padding: 20px 30px;
+	  color: white;
+	  z-index: 5;
+	  backdrop-filter: blur(2px);
+	}
+	.go-button {
+	  background: none;
+	  border: none;
+	  color: #0060FF;
+	  font-family: 'cormorant infant';
+	  font-style: italic; font-weight:300;
+	  font-size: 1.6rem;
+	  margin-top: 10px;padding-left:170px;padding-bottom:10px;
+	  cursor: none;
+	  transition: color 0.5s ease;
+	}
+	.go-button:hover {
+	  color: white;
+	}
+	.intro-box::before,
+	.intro-box::after {
+	  content: '';
+	  position: absolute;
+	  width: 40px;
+	  height: 40px;
+	  border: solid #2A10DF;
+	  z-index: 2;
+	}
+
+	.intro-box::before {
+	  border-width: 5px 0 0 5px;
+	  top: -2px;
+	  left: -2px;
+	}
+
+	.intro-box::after {
+	  border-width: 0 5px 5px 0;
+	  bottom: -2px;
+	  right: -2px;
+	}
+
+	.intro-box .corner-top-right,
+	.intro-box .corner-bottom-left {
+	  content: '';
+	  position: absolute;
+	  width: 40px;
+	  height: 40px;
+	  border: solid #2A10DF;
+	  z-index: 2;
+	}
+
+	.intro-box .corner-top-right {
+	  border-width: 4px 4px 0 0;
+	  top: -2px;
+	  right: -2px;
+	}
+
+	.intro-box .corner-bottom-left {
+	  border-width: 0 0 4px 4px;
+	  bottom: -2px;
+	  left: -2px;
+	}
+	.form-popup::before,
+	.form-popup::after {
+	  content: '';
+	  position: absolute;
+	  width: 40px;
+	  height: 40px;
+	  border: solid #2A10DF;
+	  z-index: 2;
+	}
+
+	.form-popup::before {
+	  border-width: 5px 0 0 5px;
+	  top: -2px;
+	  left: -2px;
+	}
+
+	.form-popup::after {
+	  border-width: 0 5px 5px 0;
+	  bottom: -2px;
+	  right: -2px;
+	}
+
+	.form-popup .corner-top-right,
+	.form-popup .corner-bottom-left {
+	  content: '';
+	  position: absolute;
+	  width: 40px;
+	  height: 40px;
+	  border: solid #2A10DF;
+	  z-index: 2;
+	}
+
+	.form-popup .corner-top-right {
+	  border-width: 4px 4px 0 0;
+	  top: -2px;
+	  right: -2px;
+	}
+
+	.form-popup .corner-bottom-left {
+	  border-width: 0 0 4px 4px;
+	  bottom: -2px;
+	  left: -2px;
+	}
+	.p-padding{font-family: "Hahmlet";font-size: 1.2rem;line-height: 2;word-break: keep-all; padding-left:170px;margin-top: -20px;}
+	.message-label {
+	  color: #0060FF;
+	  font-family: 'Cormorant Infant', serif;
+	  font-style: italic;
+	  font-weight: 300;
+	  font-size: 1.6rem;
+	  padding-top: 10px;
+	  margin-bottom: -10px;
+	}
+
+	.message-graphic {
+	  position: absolute;
+	  bottom: 20px;
+	  right: 40px;
+	}
+	.form-graphic {bottom: 160px;left: 360px}
+
+	.message-graphic img {
+	  width: 160px;
+	  transform: rotate(15deg);
+	  
+	}
+	.blue{color: #0060FF;}
+	.form-popup {
+	  position: absolute;
+	  top: 55%;
+	  left: 50%;
+	  transform: translate(-50%, 120%);
+	  width: 500px;
+	  background: rgba(42, 16, 223, 0.1);
+	  border: 0.2px solid white;
+	  padding: 20px 30px;
+	  z-index: 10;
+	  backdrop-filter: blur(2px);
+	  color: white;
+	  opacity: 0;
+  		pointer-events: none;
+  		transition: opacity 0.6s ease;
+	}
+	.form-popup.active {
+	  opacity: 1;
+	  pointer-events: auto;
+	}
+
+	.form-popup.hidden {
+	  display: none;
+	}
+
+	.form-guide {
+	  margin-bottom: 10px;
+	}
+
+	.form-popup hr {
+	  border: none;
+	  border-top: 0.75px solid rgba(255,255,255,0.5);
+	  margin: 20px 0;
+	}
+	.input-row {
+		  display: flex;
+		  align-items: flex-end;
+		  flex-direction: column;
+		  gap: 10px;
+		  position: relative;
+		}
+	textarea {
+		width: 94%;
+	  height: 160px;
+	  padding: 15px;
+	  font-size: 0.9rem;
+	  font-family: "Hahmlet";
+	  background: rgba(255,255,255,0.1);
+	  color: white;
+	  border: none;
+	  outline: none;
+	  resize: none;
+	}
+
+	textarea::placeholder {
+	  color: rgba(255,255,255,0.2);
+	}
+	.post-button {
+	  background: none;
+	  border: none;
+	  color: #0060FF;
+	  font-family: 'cormorant infant'; font-weight:300;
+	  font-style: italic;
+	  font-size: 1.6rem;
+	  cursor: none;
+	  transition: color 0.5s ease;
+	  text-align: right;
+	}
+
+	.post-button:hover {
+	  color: white;
+	}
+	.memory-number {
+		font-family: 'cormorant infant';font-weight:300;
+		  position: absolute;
+		  font-style: italic;
+		  font-size: 1.7rem;
+		  color: white;
+		  opacity: 1;
+		  transition: opacity 0.3s ease;
+		  cursor: none;
+		}
+	.memory-number::after {
+			font-family: 'hahmlet'; font-weight:300;
+		  content: attr(data-message);
+		  position: absolute;
+		  bottom: 120%;
+		  left: 50%;
+		  transform: translateX(-50%) translateY(10px);
+		  opacity: 0;
+		  transition: opacity 0.5s ease, transform 0.5s ease;
+		  white-space: pre-line;
+		  background: rgba(42, 16, 223, 0.1);
+		  color: white;
+		  font-size: 0.9rem;
+		  padding: 10px;
+		  border: 0.2px solid #2A10DF;;
+		  z-index: 999;
+		  width: 250px;
+		  pointer-events: none;
+		  visibility: hidden;
+		}
+		.memory-number:hover::after {
+			opacity: 1;
+		  transform: translateX(-50%) translateY(0);
+		  visibility: visible;
+		}
+		body {cursor: none;}
+
+	#hollowCursor {
+	  position: fixed;
+	  top: 0;
+	  left: 0;
+	  width: 32px;
+	  height: 32px;
+	  border: 1.5px solid #0060FF;
+	  border-radius: 50%;
+	  pointer-events: none;
+	  transform: translate(-50%, -50%);
+	  z-index: 9999;
+	  box-shadow: 0 0 6px 2px rgba(42, 16, 223, 0.3);
+	  background: transparent;
+	}
+	::selection {background: #2A10DF ;color: inherit;}
+	.fade-out {
+	  opacity: 0;
+	  transition: opacity 0.5s ease;
+	}
+
+	.form-popup {
+	  opacity: 0;
+	  transition: opacity 0.5s ease;
+	}
+
+	.form-popup.active {
+	  opacity: 1;
+	  pointer-events: auto;
+	}
+</style>
+<body>
+<div id="hollowCursor"></div>
+<div class="nav-gradient"></div>
+	<nav>
+		<div class="wrap3 flex">
+			<div class="logo">
+					DAE
+			</div>
+			<ul class="menu flex">
+				<li><a href="hall1.html">(Hall I)</a></li>
+				<li><a href="hall2.html">(Hall II)</a></li>
+				<li><a href="hall3.html">(Hall III)</a></li>
+				<li><a href="hall4.html">(Hall IV)</a></li>
+			</ul>
+		</div>
+	</nav>
+	<header class="black">
+		<div class="wrap2">
+			<h1>04</h1>
+			<div class="title-wrap">
+			<h2>흔적 보관소</h2>
+				<p class="intro-fixed gray">이곳은 한때 존재했거나, 아직 완전히 사라지지 않은 흔적들을 모아 보관하는 공간입니다.</p>
+			</div>
+		</div>
+	</header>
+	<section>
+		<div class="wrap">
+			<div class="intro-box" id="introBox">
+				<div class="corner-top-right"></div>
+	  			<div class="corner-bottom-left"></div>
+	  			<div class="message-label">(Message)</div>
+				<p class="p-padding">해당 보관소는 관람자의 자율적인 참여를 통해 완성됩니다. 여러분 안에 남아 있는 퇴화의 흔적을 남겨주세요.</p>
+				<div class="message-graphic">
+	    			<img src="comp-5.gif" alt="graphic">
+	  			</div>
+				<button class="go-button" id="goBtn">(→ Go)</button>
+			</div>
+			<div class="form-popup hidden" id="memoryForm">
+				<div class="corner-top-right"></div>
+	  			<div class="corner-bottom-left"></div>
+				  <p class="form-guide"><span class="blue">*</span> &nbsp;자가진단 결과를 이곳에 남기거나, 각자의 기억, 질문, 또는 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;사라져가는 감각들에 대한 단상을 적어주세요.</p>
+				  <hr>
+				<div class="input-row">
+					  <textarea  id="userMemory" placeholder="당신은 얼마나 퇴화되었나요?"></textarea>
+					<div class="message-graphic form-graphic">
+	    				<img src="comp-5.gif" alt="graphic">
+	  				</div>
+					<button class="post-button" id="postBtn">(→ Post)</button>
+				</div>
+			</div>
+		</div>
+		<div class="iamgradient"></div>
+		<div class="iamgradient"></div>
+		<div class="bg-pic1">
+			<div class="wrap2 black">
+				<div id="backgroundArea" style="position: relative; width: 100%; min-height: 600px;"></div>
+			</div>
+		</div>
+	</section>
+	<div class="marquee-wrapper">
+	    <div class="marquee">
+	      <span class="word-group">Trace Archive</span>
+	      <span class="word-group">Trace Archive</span>
+	      <span class="word-group">Trace Archive</span>
+	      <span class="word-group">Trace Archive</span>
+	      <span class="word-group">Trace Archive</span>
+	    </div> 
+	    <div class="marquee">
+	      <span class="word-group">Trace Archive</span>
+	      <span class="word-group">Trace Archive</span>
+	      <span class="word-group">Trace Archive</span>
+	      <span class="word-group">Trace Archive</span>
+	      <span class="word-group">Trace Archive</span>
+	    </div> 
+	    <div class="marquee">
+	      <span class="word-group">Trace Archive</span>
+	      <span class="word-group">Trace Archive</span>
+	      <span class="word-group">Trace Archive</span>
+	      <span class="word-group">Trace Archive</span>
+	      <span class="word-group">Trace Archive</span>
+	    </div> 
+	</div>
+	<div class="iamgradient2">
+		<button class="enter-button" onclick="goToNextPage()">처음으로 &nbsp;></button>
+	</div>
+	<div class="transition-overlay"></div>
+</body>
+
+<script>
+  function goToNextPage() {
+    const overlay = document.querySelector('.transition-overlay');
+    overlay.classList.add('active'); 
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 800);
+  }
+</script>
+
+<script>
+  const goBtn = document.getElementById('goBtn');
+  const introBox = document.getElementById('introBox');
+  const memoryForm = document.getElementById('memoryForm');
+  const postBtn = document.getElementById('postBtn');
+  const userMemory = document.getElementById('userMemory');
+  const backgroundArea = document.getElementById('backgroundArea');
+</script>
+
+<script>
+  const hollowCursor = document.getElementById('hollowCursor');
+
+  document.addEventListener('mousemove', (e) => {
+    hollowCursor.style.top = `${e.clientY}px`;
+    hollowCursor.style.left = `${e.clientX}px`;
+  });
+
+  const links = document.querySelectorAll('.menu a');
+  const overlay = document.querySelector('.transition-overlay');
+
+  links.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const href = this.getAttribute('href');
+
+      overlay.classList.add('active');
+      setTimeout(() => {
+        window.location.href = href;
+      }, 800);
+    });
+  });
+
+  window.addEventListener('DOMContentLoaded', () => {
+    overlay.classList.add('active');
+    setTimeout(() => {
+      overlay.classList.remove('active');
+    }, 100);
+  });
+</script>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+  import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyA4QtjeA_xbK2bkFBNejoK4OHfEkA5BLIM",
+    authDomain: "webpublishing-a7432.firebaseapp.com",
+    projectId: "webpublishing-a7432",
+    storageBucket: "webpublishing-a7432.appspot.com",
+    messagingSenderId: "608726808908",
+    appId: "1:608726808908:web:be51d4c21336a1c29937e9",
+    measurementId: "G-NNNNNEV0TX"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  const goBtn = document.getElementById('goBtn');
+  const introBox = document.getElementById('introBox');
+  const memoryForm = document.getElementById('memoryForm');
+  const postBtn = document.getElementById('postBtn');
+  const userMemory = document.getElementById('userMemory');
+  const backgroundArea = document.getElementById('backgroundArea');
+
+  let currentId = 1;
+
+  function toRoman(num) {
+    const roman = ['M','CM','D','CD','C','XC','L','XL','X','IX','V','IV','I'];
+    const value = [1000,900,500,400,100,90,50,40,10,9,5,4,1];
+    let result = '';
+    for (let i = 0; i < value.length; i++) {
+      while (num >= value[i]) {
+        result += roman[i];
+        num -= value[i];
+      }
+    }
+    return result;
+  }
+
+  function createMemoryElement(memory) {
+    const span = document.createElement('span');
+    span.className = 'memory-number';
+    span.textContent = `(${toRoman(memory.id)})`;
+    span.style.left = `${memory.x}%`;
+    span.style.top = `${memory.y}px`;
+    span.setAttribute('data-message', memory.message);
+    backgroundArea.appendChild(span);
+  }
+
+  async function loadMessages() {
+    const querySnapshot = await getDocs(collection(db, "traceMessages"));
+    const docs = querySnapshot.docs;
+
+    currentId = docs.length + 1;
+
+    docs.forEach((doc, index) => {
+      const data = doc.data();
+      createMemoryElement({
+        id: index + 1,
+        message: data.message,
+        x: data.x,
+        y: data.y
+      });
+    });
+  }
+
+  async function saveMessageToFirestore(message, x, y) {
+    try {
+      await addDoc(collection(db, "traceMessages"), {
+        message: message,
+        x: x,
+        y: y
+      });
+
+      createMemoryElement({
+        id: currentId++,
+        message: message,
+        x: x,
+        y: y
+      });
+
+      userMemory.value = '';
+      memoryForm.classList.remove('active');
+      setTimeout(() => {
+        memoryForm.classList.add('hidden');
+      }, 300);
+
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  }
+
+  goBtn.addEventListener('click', () => {
+    introBox.classList.add('fade-out');
+    setTimeout(() => {
+      introBox.style.display = 'none';
+      memoryForm.classList.remove('hidden');
+      void memoryForm.offsetWidth;
+      memoryForm.classList.add('active');
+    }, 500);
+  });
+
+  postBtn.addEventListener('click', async () => {
+    const message = userMemory.value.trim();
+    if (message === '') return;
+
+    const backgroundRect = backgroundArea.getBoundingClientRect();
+    const xPercent = Math.random() * 70 + 15;
+    const yPx = Math.random() * (backgroundRect.height - 350) + 320;
+
+    await saveMessageToFirestore(message, xPercent, yPx);
+  });
+
+  loadMessages();
+</script>
+</html>

@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>자가진단관</title>
+</head>
+<link rel="icon" type="image/png" href="website.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300..700;1,300..700&family=Hahmlet:wght@100..900&display=swap" rel="stylesheet">
+	<style type=text/css>
+	html {
+	  font-family: "Hahmlet", serif;
+	  font-optical-sizing: auto;
+	  font-weight: 100;
+	  font-style: normal;
+	  line-height: 1.7rem;
+	  word-break: keep-all;
+	}
+	.cormorant-infant {
+	  font-family: "Cormorant Infant", serif;
+	  font-optical-sizing: auto;
+	  font-weight: 300;
+	  font-style: normal;
+	}
+	@font-face {
+    font-family: 'GowunBatang-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunBatang-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+	}
+	body,h1,h2,p,ol,ul{margin:0;padding:0;overflow-x:hidden}
+	nav{font-family: "Cormorant Infant";color:#0060FF; position: fixed; padding: 10px;position: fixed; top:0;left:0;width:100%;z-index: 1000;transition: all 0.3s ease;display: flex;justify-content: space-between;align-items: center;font-size: 1.2rem;background: linear-gradient(to bottom, #6E768D 0%, #73737300 100%)}
+	li{list-style-type: none}
+	.menu{width: 400px; display: flex;gap: 30px;}
+	li a{text-decoration: none; color:white;padding:3px;margin:2px;display: block;transition: all 0.3s;}
+	.menu a {color: #0060FF;text-decoration: none;font-family: 'Cormorant Infant';font-size: 1.2rem;font-weight: 100;}
+	.menu li a:hover {color: white;transition: all 0.3s;}
+	.logo{padding: 5px ;color:#0060FF;}
+	.flex{display: flex;justify-content: space-between;}
+	.black {background: black;color:white;position: relative;}
+	.wrap{width:1000px; margin:auto}
+	.wrap2{width:1200px; margin:auto}
+	a {cursor:none}
+	h1{font-family: "Cormorant Infant";color:#0060FF;font-size: 11rem;font-weight: 100;font-style:italic;padding: 50px 0 100px 0;letter-spacing: -0.03em;position:}
+	h2{font-family: 'GowunBatang-Regular';font-size: 6.5rem;font-weight: normal;
+		;letter-spacing: -0.03em;line-height: 10rem}
+	p{font-family: "Hahmlet";300;font-size: 1.2rem;overflow-y: hidden; line-height: 2.3rem;word-break: keep-all;}
+	section{padding: 150px 0px 50px 0px;background: url('bg.gif') no-repeat center center;background-size: cover;width: 100%;min-height: 1400px;background-attachment: fixed;}
+	header{padding:100px 0 150px 0}
+	.iamgradient{position: relative;bottom: 0;left: 0;width: 100%;height: 150px;background: linear-gradient(to bottom, black 10%, #2A10DF);z-index: 1;}
+	.title-wrap {display: flex;gap: 200px;}
+	.title-wrap h2 {padding: 0;margin: 0;}
+	.title-wrap p {margin-top:80px;font-size: 1rem;line-height: 1.8;max-width: 450px;}
+	.marquee-wrapper {
+		display:flex;
+      	overflow: hidden;
+     	white-space: nowrap;
+      	background-color: black;
+      	color: white;
+      	font-family: "Cormorant Infant",  monospace; font-style:italic; 
+      	font-size: 1.8rem;
+      	padding:20px 0px;
+      	box-shadow: 0 0px 10px black;
+      	border: solid #2A10DF 1px;z-index: 1;
+   	}
+   	.marquee-wrapper2 {
+		display:flex;
+      	overflow: hidden;
+     	white-space: nowrap;
+      	background-color: black;
+      	color: white;
+      	font-family: "Cormorant Infant",  monospace; font-style:italic; 
+      	font-size: 1.8rem;
+      	padding:20px 0px;
+      	box-shadow: 0 0 40px black;
+      	border: solid #2A10DF 1px; margin-top:-15px;z-index: 2;
+   	}
+   	.marquee-wrapper3 {
+		display:flex;
+      	overflow: hidden;
+     	white-space: nowrap;
+      	background-color: black;
+      	color: white;
+      	font-family: "Cormorant Infant",  monospace; font-style:italic; 
+      	font-size: 1.8rem;
+      	padding:20px 0px;
+      	box-shadow: 0 20px 20px black;
+      	border: solid #2A10DF 1px; margin-top:-15px; z-index: 3;
+   	}
+   	.marquee {
+      	display:flex;width: fit-content;
+      	animation: marquee 10s linear infinite;
+   	}
+   	.word-group {
+      	display: inline-block;
+      	margin-right: 30px;
+    }
+    @keyframes marquee {
+    	0% {transform: translateX(0);}
+		 100% {transform: translateX(-100%);}
+	}
+	.iamgradient{position: relative;bottom: 0;left: 0;width: 100%;height: 200px;background: linear-gradient(to bottom, black 30%, #2A10DF);z-index: 1;}
+	.enter-button {position: absolute;top: 40%;left: 50%;transform: translate(-50%, -50%);z-index: 3;padding: 8px 18px 10px 18px;font-size: 1.3rem;font-family: 'Hahmlet';font-weight: 200;color: white;background: transparent;border: 0.75px solid white;border-radius: 50px;cursor: none;transition: all 0.3s ease;backdrop-filter: blur(5px);}
+	.enter-button:hover {background: rgba(255, 255, 255, 0.1);color: #ccc;}
+	.transition-overlay {
+		position: fixed;
+		top: 0; left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: black;
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 0.8s ease;
+		z-index: 9999;
+	}
+	.transition-overlay.active {
+		opacity: 1;
+		pointer-events: auto;
+	}
+	.more{font-size: 1.05rem;margin-top:-40px;padding-bottom:30px;color:gray}
+
+	.card-grid {
+	  display: grid;
+	  grid-template-columns: repeat(3, 1fr);
+	  gap: 100px;
+	  
+	}
+
+	.card {
+	  perspective: 1000px;
+	  cursor: none;
+	  position: relative;
+	  width: 100%;
+	  min-height: 350px;
+	}
+
+	.card-inner {
+	  position: relative;
+	  width: 100%;
+	  height: 100%;
+	  transition: transform 0.8s;
+	  transform-style: preserve-3d;transform-origin: center;
+	}
+	.card-inner.flipped {
+    transform: rotateY(180deg);
+  }
+	.card:hover .card-inner {
+	  transform: rotateY(180deg);
+	}
+	.card-front.selected,
+  .card-back.selected {
+    border: 2px solid #2A10DF;
+    background-color: rgba(42, 16, 223, 0.1);
+  }
+  .card-front.selected .roman,
+  .card-back.selected .roman {
+    color: #2A10DF !important;
+  }
+	.card-front, .card-back {
+	  position: absolute;
+	  width: 100%;
+	  height: 100%;
+	  backface-visibility: hidden;
+	  border: 0.5px solid white;
+	  padding: 30px;
+	  background: rgba(255, 255, 255, 0.05);
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: space-between;
+	  transition: all 0.3s ease;
+	}
+
+	.card-front.selected {
+	  border: 2px solid #2A10DF;
+	  background-color: rgba(42, 16, 223, 0.1);
+	}
+
+	.card-back {
+	  transform: rotateY(180deg);
+	  background-color: rgba(0,0,0,0.8);
+	  font-size: 0.95rem;
+	}
+
+	.card img {
+	  width: 130%;
+	  height: auto;
+	  margin-top: -10px;margin-left:-40px;
+	}
+
+	.card .roman {
+	  font-family: "Cormorant Infant", serif;
+	  font-style: italic;
+	  font-size: 2.2rem;
+	  margin-bottom: 30px;
+	  color: white;
+	}
+	.card .question{
+	  font-family: "Hahmlet", serif;
+	  font-size: 1.25rem;
+	  line-height: 1.7;
+	  color: white;
+	  margin-top: 5px;
+	}
+	.card .explanation {
+	  font-family: "Hahmlet", serif;
+	  font-size: 1.05rem;
+	  line-height: 1.7;
+	  color: white;
+	  margin-top: 5px;
+	}
+	.triangle {
+	  width: 200px;
+	  height: 60px;
+	  background: linear-gradient(to top, #2A10DF, transparent);
+	  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+	  position: relative;
+	  left: 51.5%;
+	  transform: translateX(-50%);
+	  margin-top: 170px;margin-bottom:50px;
+		}
+	.result-section {
+	  border: 0.5px solid white;
+	  background-color: rgba(255,255,255,0.05);
+	  margin: 60px auto;
+	  padding: 30px;
+	  display: flex;
+	  width: 1000px;
+	  position: relative;
+	}
+
+	.graphic-box {
+	  width: 40%;
+	  position: relative;
+	}
+
+	.graphic-box img {
+	  width: 70%;transform: rotate(15deg);padding-left:30px;
+	}
+
+	.dots {
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  height: 100%;
+	  pointer-events: none;
+	}
+
+	.dots div {
+	  position: absolute;
+	  width: 7px;
+	  height:7px;
+	  background-color: white;
+	  border-radius: 50%;
+	  animation: glow 2s ease-in-out infinite;
+		}
+		@keyframes glow {
+	  0% {
+	    box-shadow: 0 0 2px 2px rgba(255, 255, 255, 0.2);
+	  }
+	  50% {
+	    box-shadow: 0 0 3px 3px rgba(255, 255, 255, 0.4);
+	  }
+	  100% {
+	    box-shadow: 0 0 2px 2px rgba(255, 255, 255, 0.2);
+	  }
+	}
+
+	.result-text {
+	  width: 84%;
+	  border-left: 0.5px solid white;
+	  padding-left: 30px;
+	  display: flex;
+	  flex-direction: column;
+	  margin-top:-10px;
+	}
+
+	.result-label {
+	  font-family: "Cormorant Infant", serif;
+	  font-style: italic;
+	  color: #2A10DF;padding-top:10px;
+	  font-size: 1.7rem;
+	}
+
+	.result-count {
+	  font-family: "GowunBatang-Regular";
+	  font-size: 2rem;
+	  margin-bottom: 30px;margin-top:-10px;
+	  padding-bottom: 10px;padding-left:150px;
+	  display: inline-block;
+	}
+
+	.result-description {
+	  font-size: 1.2rem;line-height: 2rem;
+	  margin-top: -10px;
+	  border-top: 0.3px solid white;
+	  padding-top: 20px;padding-left:150px;
+	}
+	.highlight {position: relative;display: inline-block;z-index: 0;}
+	.highlight::after {
+		 content: '';
+		 position: absolute;
+		 left: 0;
+		 bottom: -40%; 
+		 width: 100%;
+		 height: 50%;
+		 background: linear-gradient(to top, #0060FF 0%, transparent 100%);
+		 z-index: -1;pointer-events: none;
+	}
+	.result-section::before,
+	.result-section::after {
+	  content: '';
+	  position: absolute;
+	  width: 60px;
+	  height: 60px;
+	  border: solid white;
+	  z-index: 2;
+	}
+
+	.result-section::before {
+	  border-width: 4px 0 0 4px;
+	  top: -2px;
+	  left: -2px;
+	}
+
+	.result-section::after {
+	  border-width: 0 4px 4px 0;
+	  bottom: -2px;
+	  right: -2px;
+	}
+
+	.result-section .corner-top-right,
+	.result-section .corner-bottom-left {
+	  content: '';
+	  position: absolute;
+	  width: 60px;
+	  height: 60px;
+	  border: solid white;
+	  z-index: 2;
+	}
+
+	.result-section .corner-top-right {
+	  border-width: 4px 4px 0 0;
+	  top: -2px;
+	  right: -2px;
+	}
+
+	.result-section .corner-bottom-left {
+	  border-width: 0 0 4px 4px;
+	  bottom: -2px;
+	  left: -2px;
+	}
+	#result-container {margin-bottom: 0px;}
+	body {cursor: none;}
+
+	#hollowCursor {
+	  position: fixed;
+	  top: 0;
+	  left: 0;
+	  width: 32px;
+	  height: 32px;
+	  border: 1.5px solid #0060FF;
+	  border-radius: 50%;
+	  pointer-events: none;
+	  transform: translate(-50%, -50%);
+	  z-index: 9999;
+	  box-shadow: 0 0 6px 2px rgba(42, 16, 223, 0.3);
+	  background: transparent;
+	}
+	::selection {background: #2A10DF ;color: inherit;}
+</style>
+<body>
+<div id="hollowCursor"></div>
+<div class="nav-gradient"></div>
+	<nav>
+		<div class="wrap flex">
+			<div class="logo">
+					DAE
+			</div>
+			<ul class="menu flex">
+				<li><a href="hall1.html">(Hall I)</a></li>
+				<li><a href="hall2.html">(Hall II)</a></li>
+				<li><a href="hall3.html">(Hall III)</a></li>
+				<li><a href="hall4.html">(Hall IV)</a></li>
+			</ul>
+		</div>
+	</nav>
+	<header class="black">
+		<div class="wrap2">
+			<h1>03</h1>
+			<div class="title-wrap">
+			<h2>자가진단관</h2>
+				<p class="intro-fixed gray">해당 진단관에서는 문항을 통해 인류 진화 과정 중 퇴화된 <br>신체 능력들을 얼마나 가지고 있는지 자가 진단해볼 수 있습니다.</p>
+			</div>
+		</div>
+	</header>
+	<div class="black">
+		<div class="marquee-wrapper">
+			<div class="marquee">
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			</div>
+			<div class="marquee">
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			</div>
+			<div class="marquee">
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			</div>
+		</div>
+		<div class="marquee-wrapper2">
+			<div class="marquee">
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			</div>
+			<div class="marquee">
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			</div>
+			<div class="marquee">
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			</div>
+		</div>
+		<div class="marquee-wrapper2">
+			<div class="marquee">
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			</div>
+			<div class="marquee">
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			</div>
+			<div class="marquee">
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			    <span class="word-group">Self-Diagnosis Hall</span>
+			</div>
+		</div>
+	</div>
+	<section>
+		<div class="wrap black">
+			<p class="more">*각 항목에 해당한다고 생각되면 클릭하여 선택해주세요.</p>
+			<div class="card-grid"></div>
+			<div id="result-container"></div>
+		</div>
+	</section>
+	<div class="iamgradient">
+		<button class="enter-button" onclick="goToNextPage()">결과 보기 &nbsp;></button>
+	</div>
+	<div class="transition-overlay"></div>
+</body>
+<script>
+  function goToNextPage() {
+  const selectedCards = document.querySelectorAll('.card-front.selected').length;
+
+  document.querySelector('.enter-button').remove();
+
+  const triangle = document.createElement('div');
+  triangle.className = 'triangle';
+
+  const resultSection = document.createElement('div');
+  resultSection.className = 'result-section';
+
+  function generateDots(n) {
+    let dotsHTML = '';
+    for (let i = 0; i < n; i++) {
+      const top = Math.random() * 90;
+      const left = Math.random() * 90;
+      dotsHTML += `<div style="top: ${top}%; left: ${left}%; transform: translate(-50%, -50%);"></div>`;
+    }
+    return dotsHTML;
+  }
+
+  let description = '';
+  if (selectedCards <= 2) {
+    description = '당신은 완전히 진화한 현대인입니다. 퇴화된 기관이나 <br>능력이 거의 남아있지 않습니다.';
+  } else if (selectedCards <= 5) {
+    description = '조상의 흔적이 일부 남아 있지만 일상에 큰 지장은 없습니다. 아직 몇 가지 능력은 퇴화되지 않았습니다.';
+  } else {
+    description = '당신은 여러 퇴화 능력을 간직한 일종의 \'인간 타임캡슐\'입니다. 과거의 본능이 아직도 살아 있습니다.';
+  }
+
+  resultSection.innerHTML = `
+    <div class="corner-top-right"></div>
+    <div class="corner-bottom-left"></div>
+    <div class="graphic-box">
+      <img src="comp-5.gif">
+      <div class="dots">${generateDots(selectedCards)}</div>
+    </div>
+    <div class="result-text">
+      <div class="result-label">(Result)</div>
+      <div class="result-count"><span class="highlight">남아있는 흔적: ${selectedCards}개</span></div>
+      <div class="result-description">${description}</div>
+    </div>
+  `;
+
+  const resultContainer = document.getElementById('result-container');
+  resultContainer.appendChild(triangle);
+  resultContainer.appendChild(resultSection);
+
+  const nextButton = document.createElement('button');
+  nextButton.className = 'enter-button';
+  nextButton.textContent = '제4전시관 가기 >';
+  nextButton.onclick = () => {
+  const overlay = document.querySelector('.transition-overlay');
+  overlay.classList.add('active');
+  setTimeout(() => {
+    window.location.href = 'hall4.html';
+  }, 800);
+};
+
+  nextButton.style.position = 'relative';
+	nextButton.style.top = '160px';
+	nextButton.style.left = '50%';
+	nextButton.style.transform = 'translateX(-50%)';
+
+  resultContainer.appendChild(nextButton);
+}
+  const cardsData = [
+  {
+    id: 1,
+    roman: '(I)',
+    question: '손목을 굽혔을 때 손목 안쪽 힘줄이 도드라진다.',
+    explanation: '손목을 굽혔을 때 튀어나오는 힘줄은 \u2018장장근\u2019이라 불리는 근육입니다. 실제로 약 10%의 사람은 이 근육이 없으며, 손아귀 힘에도 영향이 없습니다.',
+    img: 'ankle.gif'
+  },
+  {
+    id: 2,
+    roman: '(II)',
+    question: '손을 대지 않고 귓바퀴(귀)를 움직일 수 있다.',
+    explanation: '귓바퀴를 움직이는 근육은 포유류가 소리를 추적하기 위해 발달시킨 기관입니다. 인간에게는 기능이 거의 사라져 흔적 기관으로 분류되며, 일부는 연습을 통해 미세한 움직임이 가능합니다.',
+    img: 'ear.gif'
+  },
+  {
+    id: 3,
+    roman: '(III)',
+    question: '사랑니가 나거나 발치를 한<br> 적이 있다.',
+    explanation: '사랑니는 거친 식물을 씹기 위한 어금니였지만 턱이 작아지며 기능을 잃은 퇴화 치아입니다. 현대인은 사랑니가 아예 없거나 매복되기도 하며 대표적인 퇴화 구조입니다.',
+    img: 'wisdom.gif'
+  },
+  {
+    id: 4,
+    roman: '(IV)',
+    question: '귓바퀴 가장자리에 작은 돌기가 있다.',
+    explanation: '일부 사람들의 귓바퀴 끝에는 \u2018다윈 결절\u2019이라 불리는 작은 돌기가 관찰됩니다. 이는 포유류 조상의 뾰족한 귀 끝 구조에서 유래한 흔적입니다.',
+    img: 'ear2.gif'
+  },
+  {
+    id: 5,
+    roman: '(V)',
+    question: '맹장염으로 인해 수술을 받은 적이 있다.',
+    explanation: '맹장(충수)은 섬유질 분해에 쓰이던 장기의 흔적입니다. 현대인은 식단 변화로 이 기능을 상실했고, 제거해도 생존에 큰 영향을 주지 않는 대표적인 퇴화 기관입니다.',
+    img: 'ap.gif'
+  },
+  {
+    id: 6,
+    roman: '(VI)',
+    question: '팔, 다리 등 온몸에 털이 많은 편이다.',
+    explanation: '인간의 체모는 과거 체온 조절에 중요한 역할을 했지만 현재는 대부분 퇴화한 상태입니다. 남아있는 체모는 과거의 흔적일 뿐입니다.',
+    img: 'hair.gif'
+  },
+  {
+    id: 7,
+    roman: '(VII)',
+    question: '어두운 곳에서도 시야가 밝은 편이라 사물을 잘 구분한다.',
+    explanation: '야간시력은 인간이 낮에 적응하며 퇴화한 감각입니다. 야행성 조상의 흔적은 일부 제한된 시각 능력으로만 남아 있습니다.',
+    img: 'vision.gif'
+  },
+  {
+    id: 8,
+    roman: '(VIII)',
+    question: '넘어지거나 오래 앉아 있으면 꼬리뼈가 아프다.',
+    explanation: '꼬리뼈는 과거 꼬리의 퇴화된 흔적입니다. 인간의 직립보행 이후 불필요해진 꼬리는 더 이상 자라지 않으며, 현재는 몇 개의 작은 뼈로만 남아 있습니다.',
+    img: 'tail.gif'
+  },
+  {
+    id: 9,
+    roman: '(IX)',
+    question: '딸꾹질을 자주 하거나 한번 하면 오래 지속되는 편이다.',
+    explanation: '딸꾹질은 고대 양서류의 호흡 반사가 남은 흔적일 수 있습니다. 뇌간에 남은 오래된 호흡 회로의 작동으로 해석됩니다.',
+    img: 'hiccup.gif'
+  }
+];
+
+const grid = document.querySelector('.card-grid');
+
+cardsData.forEach(card => {
+  const el = document.createElement('div');
+  el.className = 'card';
+
+  el.innerHTML = `
+    <div class="card-inner">
+      <div class="card-front">
+        <div class="roman">${card.roman}</div>
+        <div class="question">${card.question}</div>
+        <img src="${card.img}" alt="img">
+      </div>
+      <div class="card-back">
+        <div class="roman">${card.roman}</div>
+        <div class="explanation">${card.explanation}</div>
+      </div>
+    </div>
+  `;
+
+  const cardInner = el.querySelector('.card-inner');
+  const img = el.querySelector('img');
+
+  img.addEventListener('mouseenter', () => {
+    cardInner.classList.add('flipped');
+  });
+  img.addEventListener('mouseleave', () => {
+    cardInner.classList.remove('flipped');
+  });
+
+  el.addEventListener('click', () => {
+    const front = el.querySelector('.card-front');
+    const back = el.querySelector('.card-back');
+    front.classList.toggle('selected');
+    back.classList.toggle('selected');
+  });
+
+  grid.appendChild(el);
+});
+</script>
+<script>
+  const hollowCursor = document.getElementById('hollowCursor');
+
+  document.addEventListener('mousemove', (e) => {
+    hollowCursor.style.top = `${e.clientY}px`;
+    hollowCursor.style.left = `${e.clientX}px`;
+  });
+  const links = document.querySelectorAll('.menu a');
+  const overlay = document.querySelector('.transition-overlay');
+
+  links.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const href = this.getAttribute('href');
+
+      overlay.classList.add('active');
+      setTimeout(() => {
+        window.location.href = href;
+      }, 800);
+    });
+  });
+  window.addEventListener('DOMContentLoaded', () => {
+	  const overlay = document.querySelector('.transition-overlay');
+
+	  
+	  overlay.classList.add('active');
+
+	  
+	  setTimeout(() => {
+	    overlay.classList.remove('active');
+	  }, 100);
+	});
+</script>
+</html>
