@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>능력 전시장</title>
+</head>
+<link rel="icon" type="image/png" href="website.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300..700;1,300..700&family=Hahmlet:wght@100..900&display=swap" rel="stylesheet">
+	<style type=text/css>
+	html {
+	  font-family: "Hahmlet", serif;
+	  font-optical-sizing: auto;
+	  font-weight: 100;
+	  font-style: normal;
+	  line-height: 1.7rem;
+	}
+	.cormorant-infant {
+	  font-family: "Cormorant Infant", serif;
+	  font-optical-sizing: auto;
+	  font-weight: 300;
+	  font-style: normal;
+	}
+	@font-face {
+    font-family: 'GowunBatang-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunBatang-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+	}
+	body,h1,h2,p,ol,ul{margin:0;padding:0;overflow-x:hidden}
+	nav{font-family: "Cormorant Infant";color:#0060FF; position: fixed; padding: 10px;position: fixed; top:0;left:0;width:100%;z-index: 1000;transition: all 0.3s ease;display: flex;justify-content: space-between;align-items: center;font-size: 1.2rem;background: linear-gradient(to bottom, #6E768D 0%, #73737300 100%)}
+	li{list-style-type: none}
+	.menu{width: 400px; display: flex;gap: 30px;}
+	li a{text-decoration: none; color:white;padding:3px;margin:2px;display: block;transition: all 0.3s;}
+	.menu a {color: #0060FF;text-decoration: none;font-family: 'Cormorant Infant';font-size: 1.2rem;font-weight: 100;}
+	.menu li a:hover {color: white;transition: all 0.3s;}
+	a {cursor:none}
+	.logo{padding: 5px ;color:#0060FF;}
+	.flex{display: flex;justify-content: space-between;}
+	.black {background: black;color:white;position: relative;}
+	.black2 {background: black;}
+	.gray {color: #D9D9D9}
+	.wrap{width:1000px; margin:auto}
+	.wrap2{width:1200px; margin:auto}
+	h1{font-family: "Cormorant Infant";color:#0060FF;font-size: 11rem;font-weight: 100;font-style:italic;padding: 50px 0 100px 0;letter-spacing: -0.03em;position:}
+	h2{font-family: 'GowunBatang-Regular';font-size: 6.5rem;font-weight: normal;
+		;letter-spacing: -0.03em;line-height: 10rem}
+	p{font-family: "Hahmlet";300;font-size: 1.2rem;overflow-y: hidden; line-height: 2.3rem;word-break: keep-all;}
+	section{padding: 150px 0px;border-bottom: 1px solid #444}
+	header{padding:100px 0 150px 0}
+	.iamgradient{position: relative;bottom: 0;left: 0;width: 100%;height: 150px;background: linear-gradient(to bottom, black 10%, #2A10DF);z-index: 1;}
+	.title-wrap {display: flex;gap: 200px;}
+	.title-wrap h2 {padding: 0;margin: 0;}
+	.title-wrap p {margin-top:80px;font-size: 1rem;line-height: 1.8;max-width: 380px;}
+	.bg-pic1{ width: 100%;min-height: 700px;background: url('comp-4.gif') center center / cover no-repeat; background-attachment: fixed;position: relative;overflow: hidden;color:white}
+	.marquee-wrapper {
+		display:flex;
+      	overflow: hidden;
+     	white-space: nowrap;
+      	background-color: black;
+      	color: white;
+      	font-family: "Cormorant Infant",  monospace; font-style:italic; 
+      	font-size: 1.8rem;
+      	padding:20px 0px;
+      	box-shadow: 0 0px 10px black;
+      	border: solid #2A10DF 1px;
+   	}
+   	.marquee {
+      	display:flex;width: fit-content;
+      	animation: marquee 10s linear infinite;
+   	}
+   	.word-group {
+      	display: inline-block;
+      	margin-right: 30px;
+    }
+    @keyframes marquee {
+    	0% {transform: translateX(0);}
+		 100% {transform: translateX(-100%);}
+	}
+	.tape-wrapper {overflow: visible;background: black;position: relative;z-index: 5;}
+	.tape1 {transform: rotate(4deg);position: relative;z-index: 1;top:20px}
+	.tape2 {transform: rotate(-5.5deg);position: relative;z-index: 2;top:-30px}
+	.tape3 {position: relative;z-index: 3;}
+	.ability-graphic-section {
+	  display: flex;
+	  gap: 50px;
+	  position: relative;
+	  padding: 50px 150px;
+	  flex-wrap: nowrap;
+	  overflow: hidden;
+	}
+	.graphic-absolute-wrapper {
+	  position: relative;
+	  width: 50%;
+	  min-height: 900px;
+	  flex-shrink: 0;
+	  flex-grow:0;
+	  display:block;
+	}
+
+	.graphic-absolute-item {
+	  position: absolute;
+	  width: 380px;
+	  text-align: center;
+	}
+
+	.graphic-absolute-item p {
+	  margin-top: -10px;
+	  font-family: "Cormorant Infant", serif;
+	  font-style: italic;
+	  font-weight: 300;
+	  color: #0060FF;
+	  font-size: 1.6rem;
+	}
+
+	.graphic-absolute-item img {
+	  width: 100%;
+	  height: auto;
+	  transition: transform 0.3s ease;
+  	will-change: transform;
+  	transform-style: preserve-3d;
+		}
+	.graphic-absolute-item img:hover {animation: spinY 4s linear infinite;}
+
+	.ability-graphic-right {
+	  flex: 1;
+	  max-width: 50%;
+	  position: relative;
+	  padding-left: 50px;
+	}
+	.vertical-divider {
+	  position: absolute;
+	  top: 0;
+	  right: 45%;
+	  height: 100%;
+	  width: 1px;
+	  background: #444;
+	  z-index: 2;
+	}
+	.right-header {
+	  display: flex;
+	  align-items: center;
+	  gap: 20px;
+	  padding-left: 10px;
+	}
+
+	.right-header h3 {
+	  font-family: 'GowunBatang-Regular';font-size: 2.2rem;margin: 0px 0px 20px 0;padding-left: 50px}
+
+	.divider {
+	  height: 1px;
+	  background: #444;
+	  margin: 20px 0;
+	  width: 70%;
+	}
+
+	.right-image img {
+	  width: 700px !important;
+	  height: auto;
+	  display: block;
+	  margin-left: -70px;
+	}
+
+	.right-description {
+	  padding-left: 30px;
+	  padding-top: 5px;
+	  max-width: 450px;
+	}
+
+	.right-description p {
+	  white-space: pre-wrap;
+	}
+	.number{color:#0060FF; font-size: 2.2rem;font-style:italic;margin-top:-30px;padding-left: 20px}
+	.highlight {position: relative;display: inline-block;z-index: 0;}
+	.highlight::after {
+		 content: '';
+		 position: absolute;
+		 left: 0;
+		 bottom: 0%; 
+		 width: 100%;
+		 height: 30%;
+		 background: linear-gradient(to top, #0060FF 0%, transparent 100%);
+	}
+	.iamgradient{position: relative;bottom: 0;left: 0;width: 100%;height: 200px;background: linear-gradient(to bottom, black 30%, #2A10DF);z-index: 1;}
+	.enter-button {position: absolute;top: 40%;left: 50%;transform: translate(-50%, -50%);z-index: 3;padding: 8px 18px 10px 18px;font-size: 1.3rem;font-family: 'Hahmlet';font-weight: 200;color: white;background: transparent;border: 0.75px solid white;border-radius: 50px;cursor: none;transition: all 0.3s ease;backdrop-filter: blur(5px);}
+	.enter-button:hover {background: rgba(255, 255, 255, 0.1);color: #ccc;}
+	.transition-overlay {
+		position: fixed;
+		top: 0; left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: black;
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 0.8s ease;
+		z-index: 9999;
+	}
+	.transition-overlay.active {
+		opacity: 1;
+		pointer-events: auto;
+	}
+	@keyframes spinY {
+  from {transform: rotateY(0deg);}
+  to {transform: rotateY(360deg);}
+	}
+	.right-description p {white-space: pre-wrap;opacity: 1;transition: opacity 0.5s ease;}
+	.right-description p.fade-out {opacity: 0;}
+	.fade-out {
+	  opacity: 0;
+	  transition: opacity 0.3s ease;
+	}
+
+	.fade-in {
+	  opacity: 1;
+	  transition: opacity 0.3s ease;}
+
+	body {cursor: none;}
+
+	#hollowCursor {
+	  position: fixed;
+	  top: 0;
+	  left: 0;
+	  width: 32px;
+	  height: 32px;
+	  border: 1.5px solid #0060FF;
+	  border-radius: 50%;
+	  pointer-events: none;
+	  transform: translate(-50%, -50%);
+	  z-index: 9999;
+	  box-shadow: 0 0 6px 2px rgba(42, 16, 223, 0.3);
+	  background: transparent;
+	}
+	::selection {background: #2A10DF ;color: inherit;}
+</style>
+<body>
+<div id="hollowCursor"></div>
+	<div class="nav-gradient"></div>
+	<nav>
+		<div class="wrap flex">
+			<div class="logo">
+					DAE
+			</div>
+			<ul class="menu flex">
+				<li><a href="hall1.html">(Hall I)</a></li>
+				<li><a href="hall2.html">(Hall II)</a></li>
+				<li><a href="hall3.html">(Hall III)</a></li>
+				<li><a href="hall4.html">(Hall IV)</a></li>
+			</ul>
+		</div>
+	</nav>
+	<header class="black">
+		<div class="wrap2">
+			<h1>01</h1>
+			<div class="title-wrap">
+			<h2>능력 전시장</h2>
+				<p class="intro-fixed gray">해당 전시장은 한때 여러분이 분명히 가지고 있었던 능력들이 보존된 공간입니다.</p>
+			</div>
+		</div>
+	</header>
+	<div class="black2">
+		<div class="tape-wrapper tape1">
+			<div class="marquee-wrapper">
+			  <div class="marquee">
+			    <span class="word-group">Ability Exhibition Hall</span>
+			    <span class="word-group">Ability Exhibition Hall</span>
+			    <span class="word-group">Ability Exhibition Hall</span>
+			    <span class="word-group">Ability Exhibition Hall</span>
+			    <span class="word-group">Ability Exhibition Hall</span>
+			  </div> 
+			  <div class="marquee">
+			    <span class="word-group">Ability Exhibition Hall</span>
+			    <span class="word-group">Ability Exhibition Hall</span>
+			    <span class="word-group">Ability Exhibition Hall</span>
+			    <span class="word-group">Ability Exhibition Hall</span>
+			    <span class="word-group">Ability Exhibition Hall</span>
+			  </div> 
+			  <div class="marquee">
+			    <span class="word-group">Ability Exhibition Hall</span>
+			    <span class="word-group">Ability Exhibition Hall</span>
+			    <span class="word-group">Ability Exhibition Hall</span>
+			    <span class="word-group">Ability Exhibition Hall</span>
+			    <span class="word-group">Ability Exhibition Hall</span>
+			  </div> 
+			</div>
+		</div>
+		<div class="tape-wrapper tape2">
+		  <div class="marquee-wrapper">
+		    <div class="marquee">
+		      <span class="word-group">Ability Exhibition Hall</span>
+		      <span class="word-group">Ability Exhibition Hall</span>
+		      <span class="word-group">Ability Exhibition Hall</span>
+		      <span class="word-group">Ability Exhibition Hall</span>
+		      <span class="word-group">Ability Exhibition Hall</span>
+		    </div> 
+		    <div class="marquee">
+			    <span class="word-group">Ability Exhibition Hall</span>
+			    <span class="word-group">Ability Exhibition Hall</span>
+			    <span class="word-group">Ability Exhibition Hall</span>
+			    <span class="word-group">Ability Exhibition Hall</span>
+			    <span class="word-group">Ability Exhibition Hall</span>
+			  </div> 
+			  <div class="marquee">
+			    <span class="word-group">Ability Exhibition Hall</span>
+			    <span class="word-group">Ability Exhibition Hall</span>
+			    <span class="word-group">Ability Exhibition Hall</span>
+			    <span class="word-group">Ability Exhibition Hall</span>
+			    <span class="word-group">Ability Exhibition Hall</span>
+			  </div> 
+		  </div>
+		</div>
+		<div class="tape-wrapper tape3">
+		  <div class="marquee-wrapper">
+		    <div class="marquee">
+		      <span class="word-group">Ability Exhibition Hall</span>
+		      <span class="word-group">Ability Exhibition Hall</span>
+		      <span class="word-group">Ability Exhibition Hall</span>
+		      <span class="word-group">Ability Exhibition Hall</span>
+		      <span class="word-group">Ability Exhibition Hall</span>
+		    </div>
+		    <div class="marquee">
+			    <span class="word-group">Ability Exhibition Hall</span>
+			    <span class="word-group">Ability Exhibition Hall</span>
+			    <span class="word-group">Ability Exhibition Hall</span>
+			    <span class="word-group">Ability Exhibition Hall</span>
+			    <span class="word-group">Ability Exhibition Hall</span>
+			  </div> 
+			  <div class="marquee">
+			    <span class="word-group">Ability Exhibition Hall</span>
+			    <span class="word-group">Ability Exhibition Hall</span>
+			    <span class="word-group">Ability Exhibition Hall</span>
+			    <span class="word-group">Ability Exhibition Hall</span>
+			    <span class="word-group">Ability Exhibition Hall</span>
+			  </div> 
+		  </div>
+		</div>
+	</div>
+	<section class="bg-pic1 ability-graphic-section">
+		<div class="vertical-divider"></div>
+		<div class="graphic-absolute-wrapper">
+		    <div class="graphic-absolute-item" style="top: 50px; left: -120px;">
+		      <img src="wisdom.gif" alt="wisdom graphic">
+		      <p>(II)</p>
+		    </div>
+		    <div class="graphic-absolute-item" style="top: -20px; left: 470px;">
+		      <img src="hair.gif" alt="hair graphic">
+		      <p>(IV)</p>
+		    </div>
+		    <div class="graphic-absolute-item" style="top: 240px; left: 230px;">
+		      <img src="vision.gif" alt="vision graphic">
+		      <p>(I)</p>
+		    </div>
+		    <div class="graphic-absolute-item" style="top: 500px; left: -50px;">
+		      <img src="ear.gif" alt="ear graphic">
+		      <p>(VI)</p>
+		    </div>
+		    <div class="graphic-absolute-item" style="top: 670px; left: 300px;">
+		      <img src="tail.gif" alt="tail graphic">
+		      <p>(III)</p>
+		    </div>
+		    <div class="graphic-absolute-item" style="top: 430px; left: 580px;">
+		      <img src="ap.gif" alt="ap graphic">
+		      <p>(V)</p>
+		    </div>
+		</div>
+
+		<div class="ability-graphic-right">
+		    <div class="right-header">
+		      <p class="number">(IV)</p>
+		      <h3>체모와 소름</h3>
+		    </div>
+		    <div class="divider"></div>
+		    <div class="right-image">
+		      <img src="hair.gif" alt="hair detail">
+		    </div>
+		    <div class="divider"></div>
+		    <div class="right-description">
+		      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		        한때 인간의 조상은 온몸이 풍성한 체모로 덮여 있었으며, 이는 추위, 해충, 자외선으로부터 몸을 보호하고 위협 상황에서 자신을 부풀려 보이게 하는 <span class="highlight">생존 도구</span>였습니다.<br><br>
+		        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		        체모를 곤두세우는 데 관여하는 입모근 (piloerector muscle)은 현재도 남아 있어, 추위나 감정적 자극에 소름 형태로 반응합니다.
+		        하지만 옷을 입고 땀으로 체온을 조절하게 되면서 체모는 퇴화하여 <span class="highlight">얇고 짧은 솜털</span> 수준으로 남았습니다.<br><br>
+		      </p>
+		    </div>
+		</div>
+
+	</section>
+	<div class="iamgradient">
+		<button class="enter-button" onclick="goToNextPage()">제2전시관 가기 &nbsp;></button>
+	</div>
+	<div class="transition-overlay"></div>
+
+<script>
+  function goToNextPage() {
+    const overlay = document.querySelector('.transition-overlay');
+    overlay.classList.add('active');
+    setTimeout(() => {
+      window.location.href = "hall2.html";
+    }, 800);
+  }
+</script>
+
+<script>
+  document.querySelector('.number').textContent = ``;
+  document.querySelector('.right-header h3').textContent = ``;
+  document.querySelector('.right-image').innerHTML = ``;
+  document.querySelector('.right-description p').innerHTML = `<p class="gray" style="font-size: 1.05rem;margin-top:-40px">
+    각 그래픽에 대한 설명을 보려면 클릭하세요.
+  </p>`;
+  document.querySelectorAll('.divider').forEach(div => {
+    div.style.display = "none";
+  });
+
+  let lockedGraphic = null;
+
+  const descriptions = {
+    "vision.gif": {
+      number: "(I)",
+      title: "야간 시력",
+      image: "vision.gif",
+      text: `           고양이나 사슴은 어둠 속에서도 선명한 시야를 가집니다. 인간 역시 과거 야행성 조상 덕분에 ‘야간 시력’의 흔적을 지니고 있습니다. 그 핵심은 <span class="highlight">막대세포</span>(Rod cell)로, 이를 통해 빛이 거의 없는 상황에서도 명암을 감지해 위협을 빠르게 포착할 수 있었습니다.
+
+           하지만 <span class="highlight">낮 중심의 생활</span>로 진화하면서, 빛을 반사하는 조직(tapetum lucidum)은 사라졌고, 밤 시력은 크게 약해졌습니다. 한때 존재했던 야간 시력의 감각은 현재는 퇴화된 셈입니다.`
+    },
+    "wisdom.gif": {
+      number: "(II)",
+      title: "사랑니",
+      image: "wisdom.gif",
+      text: `           사랑니는 인간의 <span class="highlight">세 번째 어금니</span>로, 과거 턱이 크고 거친 음식을 씹던 시절에는 꼭 필요했습니다. 하지만 불 사용과 조리 식단의 등장으로 턱은 작아졌고, 치아 수는 그대로여서 사랑니가 날 공간이 부족해졌습니다.
+
+           그 결과 사랑니는 매복되거나 엇나가며 통증과 질병을 유발하게 되었고, 일부는 아예 사랑니가 나지 않는 경우도 늘고 있습니다. 이는 사랑니가 퇴화 중이라는 진화적 증거입니다.`
+    },
+    "tail.gif": {
+      number: "(III)",
+      title: "꼬리",
+      image: "tail.gif",
+      text: `           인간의 척추는 <span class="highlight">약 33개의 마디</span>로 구성되며, 그 끝에는 꼬리뼈(coccyx)가 위치합니다. 이 뼈는 척추동물의 꼬리에서 유래한 구조로, 인간의 진화 과정에서 기능을 상실하며 퇴화하였습니다.
+
+           인간의 조상은 균형 유지, 의사소통, 포식자 회피 등을 위해 꼬리를 사용하였으나, <span class="highlight">직립보행</span>으로 이동 방식이 변화하면서 꼬리는 기능적 필요성을 상실하였습니다. 그 결과, 오늘날 꼬리뼈는 신체 구조의 일부로 남아 있지만, 외부로 돌출되지 않으며 운동성도 없습니다.`
+    },
+    "hair.gif": {
+      number: "(IV)",
+      title: "체모와 소름",
+      image: "hair.gif",
+      text: `           한때 인간의 조상은 온몸이 풍성한 체모로 덮여 있었으며, 이는 추위, 해충, 자외선으로부터 몸을 보호하고 위협 상황에서 자신을 부풀려 보이게 하는 <span class="highlight">생존 도구</span>였습니다.<br>
+                  체모를 곤두세우는 데 관여하는 입모근(piloerector muscle)은 현재도 남아 있어, 추위나 감정적 자극에 소름 형태로 반응합니다. 하지만 옷을 <br>입고 땀으로 체온을 조절하게 되면서 체모는 퇴화하여 <span class="highlight">얇고 짧은 솜털</span> 수준으로 남았습니다.`
+    },
+    "ap.gif": {
+      number: "(V)",
+      title: "맹장",
+      image: "ap.gif",
+      text: `           맹장은 소장과 대장이 만나는 지점에 위치한, 길이 약 5~10cm의 소기관입니다. 인류의 조상이 섭취한 <span class="highlight">섬유질이 풍부한 물질</span>을 발효 및 분해해 에너지로 전환하는 기능을 수행하곤 하였습니다. 하지만 조리문화의 발달로 식단이 부드러워지며, 고섬유질 음식을 소화할 필요성이 감소함에 따라 맹장은 점차 크기와 기능을 상실하게 되었습니다.
+
+           오늘날 맹장은 생존에 필수적이지 <span class="highlight">않은</span> 기관으로 분류되며, 종종 염증이나 파열 등의 문제로 제거되기도 합니다.`
+    },
+    "ear.gif": {
+      number: "(VI)",
+      title: "귀 움직이기",
+      image: "ear.gif",
+      text: `           고양이나 말처럼 많은 동물은 귀를 움직여 소리를 감지하거나 감정을 표현합니다. 인간의 귀에도 이를 조절하는 <span class="highlight">세 개의 외이근</span>이 남아 있지만, 대부분 사용되지 않습니다.
+
+           머리를 돌려 소리를 추적할 수 있게 되면서 귀를 움직일 필요가 줄어들었고, 시각 중심의 소통이 주를 이루게 되면서 이 기능은 점차 퇴화했습니다. 지금은 일부 사람만이 귀를 미세하게 움직일 수 있을 뿐이며, 이는 과거 기능의 흔적입니다.`
+    }
+  };
+
+     document.querySelectorAll('.graphic-absolute-item img').forEach(img => {
+    const src = img.getAttribute('src');
+
+    img.addEventListener('mouseenter', () => {
+      if (lockedGraphic) return;
+      updateDescription(src);
+    });
+
+    img.addEventListener('click', () => {
+      if (lockedGraphic === src) {
+        lockedGraphic = null;
+        clearDescription();
+      } else {
+        lockedGraphic = src;
+        updateDescription(src);
+      }
+    });
+  });
+
+  function updateDescription(src) {
+    const content = descriptions[src];
+    if (!content) return;
+
+    const numberEl = document.querySelector('.number');
+    const titleEl = document.querySelector('.right-header h3');
+    const imageWrapper = document.querySelector('.right-image');
+    const descEl = document.querySelector('.right-description p');
+
+    numberEl.classList.add('fade-out');
+    titleEl.classList.add('fade-out');
+    imageWrapper.classList.add('fade-out');
+    descEl.classList.add('fade-out');
+
+    setTimeout(() => {
+      numberEl.textContent = content.number;
+      titleEl.textContent = content.title;
+      imageWrapper.innerHTML = `<img src="${content.image}" style="width:700px; height:auto;">`;
+      descEl.innerHTML = content.text;
+
+      numberEl.classList.remove('fade-out');
+      titleEl.classList.remove('fade-out');
+      imageWrapper.classList.remove('fade-out');
+      descEl.classList.remove('fade-out');
+
+      document.querySelectorAll('.divider').forEach(div => {
+        div.style.display = "block";
+      });
+    }, 300);
+  }
+
+  function clearDescription() {
+    const numberEl = document.querySelector('.number');
+    const titleEl = document.querySelector('.right-header h3');
+    const imageWrapper = document.querySelector('.right-image');
+    const descEl = document.querySelector('.right-description p');
+
+    numberEl.textContent = "";
+    titleEl.textContent = "";
+    imageWrapper.innerHTML = "";
+    descEl.innerHTML = `<p class="gray" style="font-size: 1.05rem;margin-top:-40px">각 그래픽에 대한 설명을 보려면 마우스를 올리세요.</p>`;
+
+    document.querySelectorAll('.divider').forEach(div => {
+      div.style.display = "none";
+    });
+  }
+</script>
+<script>
+  const hollowCursor = document.getElementById('hollowCursor');
+  const enterButton = document.querySelector('.enter-button');
+
+  document.addEventListener('mousemove', (e) => {
+    hollowCursor.style.top = `${e.clientY}px`;
+    hollowCursor.style.left = `${e.clientX}px`;
+  });
+
+  enterButton.addEventListener('mouseenter', () => {
+    hollowCursor.classList.add('hover-effect');
+  });
+
+  enterButton.addEventListener('mouseleave', () => {
+    hollowCursor.classList.remove('hover-effect');
+  });
+</script>
+
+<script>
+  const links = document.querySelectorAll('.hall-go, .menu a');
+  const overlay = document.querySelector('.transition-overlay');
+
+  links.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const href = this.getAttribute('href');
+
+      overlay.classList.add('active');
+      setTimeout(() => {
+        window.location.href = href;
+      }, 800);
+    });
+  });
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const overlay = document.querySelector('.transition-overlay');
+    overlay.classList.add('active');
+    setTimeout(() => {
+      overlay.classList.remove('active');
+    }, 100);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>
+		퇴화된 능력 박람회
+	</title>
+	<link rel="icon" type="image/png" href="website.png">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300..700;1,300..700&family=Hahmlet:wght@100..900&display=swap" rel="stylesheet">
+	<style type=text/css>
+	html {
+	  font-family: "Hahmlet", serif;
+	  font-optical-sizing: auto;
+	  font-weight: 100;
+	  font-style: normal;
+	  line-height: 1.7rem;
+	}
+	.cormorant-infant {
+	  font-family: "Cormorant Infant", serif;
+	  font-optical-sizing: auto;
+	  font-weight: 300;
+	  font-style: normal;
+	}
+	@font-face {
+    font-family: 'GowunBatang-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunBatang-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+	}
+	body,h1,h2,p,ol,ul{margin:0;padding:0;overflow-x:hidden}
+	nav{font-family: 'Cormorant Infant';font-style: italic;color:#0060FF; position: fixed; top:40px;left: 0;width:100%;z-index: 1000;display: flex;justify-content: center; align-items: center;height: 40px;}
+	li{list-style-type: none}
+	.menu{display: flex;gap: 120px;margin: 0 auto;}
+	.menu a {color: #0060FF;text-decoration: none;font-family: 'Cormorant Infant';font-size: 1.5rem;font-weight: 100;}
+	h1{font-family: 'GowunBatang-Regular';font-size: 8.3rem;font-weight: normal;padding: 200px 0px 120px 0px;word-break: keep-all;background: linear-gradient(to bottom, white 30%, #999999 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;letter-spacing: -0.03em;user-select: none;
+  cursor: default;}
+	h2{font-family: "Hahmlet";font-size: 1.2rem;font-weight: 100;overflow-y: hidden;}
+	p{font-family: "Hahmlet";300;font-size: 1.5rem;}
+	section{padding: 50px 0px 0 0}
+	.flex{display: flex;justify-content: space-between;}
+	.black {background: black;color:white}
+	.gray {color: #D9D9D9}
+	.nav-gradient{position: fixed; top: 0; left: 0;height: 50px;width: 100%;background: linear-gradient(to bottom, #6E768D 0%, #73737300 100%);z-index: 1001;}
+	.wrap{width:1000px; margin:auto}
+	.top {position: fixed; top: 0;left: 0;width: 100%;height: 40px;background: linear-gradient(to bottom, #ffffff 0%, rgba(0,0,0,0) 50px);z-index: 999}
+	.center-spacing{text-align: center;}
+	.bg-pic{background:url(comp-1.gif);background-size:cover;background-repeat: no-repeat;}
+	.black-entry {position: relative;width:100%;min-height: 63vh;overflow: hidden;background: black;}
+	.background-image {position: absolute;top: -300px;left: 0;width: 100%; height: auto; z-index: 1;}
+	.graphic-layer {position: absolute;top: 37%;left: 50%;transform: translate(-50%, -50%); width: 1200px;height: auto;z-index: 2;}
+	.enter-button {position: absolute;top: 63%;left: 50%;transform: translate(-50%, -50%);z-index: 3;padding: 8px 18px 10px 18px;font-size: 1.3rem;font-family: 'Hahmlet';font-weight: 200;color: white;background: transparent;border: 0.75px solid white;border-radius: 50px;transition: all 0.3s ease;backdrop-filter: blur(5px);}
+	.enter-button:hover {background: rgba(255, 255, 255, 0.1);color: #ccc;}
+	.transition-overlay {
+		position: fixed;
+		top: 0; left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: black;
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 0.3s ease;
+		z-index: 9999;
+	}
+	.transition-overlay.active {
+		opacity: 1;
+		pointer-events: auto;
+	}
+	body {cursor: none;}
+
+	#hollowCursor {
+	  position: fixed;
+	  top: 0;
+	  left: 0;
+	  width: 32px;
+	  height: 32px;
+	  border: 1.5px solid #0060FF;
+	  border-radius: 50%;
+	  pointer-events: none;
+	  transform: translate(-50%, -50%);
+	  z-index: 9999;
+	  box-shadow: 0 0 6px 2px rgba(42, 16, 223, 0.3);
+	  background: transparent;
+	}
+	::selection {background: #2A10DF ;color: inherit;}
+	</style>
+</head>
+<body>
+<div id="hollowCursor"></div>
+<div class="nav-gradient"></div>
+<nav>
+	<div class="flex">
+		<ul class="menu flex">
+			<li><a>(Degenerate)</a></li>
+			<li><a>(Abilities)</a></li>
+			<li><a>(Expo)</a></li>
+		</ul>
+	</div>
+</nav>
+<header class="black">
+	<h1 class="center-spacing">퇴화된 능력 박람회</h1>
+	<h2 class="center-spacing gray wrap">해당 박람회에서는 인간에게 한때 존재했으나 지금은 사라진 능력들을 전시합니다.</h2>
+</header>
+<section class="black-entry">
+	<img class="background-image" src="comp-1.gif" alt="배경">
+  	<img class="graphic-layer" src="comp-2.gif" alt="중앙 그래픽">
+	<button class="enter-button" onclick="goToNextPage()">전시장 입장하기 &nbsp;></button>
+</section>
+<div class="transition-overlay"></div>
+</body>
+<script>
+  function goToNextPage() {
+    window.location.href = 'intro.html';
+  }
+  function goToNextPage() {
+    const overlay = document.querySelector('.transition-overlay');
+    overlay.classList.add('active'); 
+    setTimeout(() => {
+      window.location.href = "intro.html";
+    }, 800);
+  }
+  const hollowCursor = document.getElementById('hollowCursor');
+
+document.addEventListener('mousemove', (e) => {
+  hollowCursor.style.top = `${e.clientY}px`;
+  hollowCursor.style.left = `${e.clientX}px`;
+});
+window.addEventListener('DOMContentLoaded', () => {
+	  const overlay = document.querySelector('.transition-overlay');
+
+	  
+	  overlay.classList.add('active');
+
+	  
+	  setTimeout(() => {
+	    overlay.classList.remove('active');
+	  }, 100);
+	});
+</script>
+</html>

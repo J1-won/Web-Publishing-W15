@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>남아있는 흔적관</title>
+</head>
+<link rel="icon" type="image/png" href="website.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300..700;1,300..700&family=Hahmlet:wght@100..900&display=swap" rel="stylesheet">
+	<style type=text/css>
+	html {
+	  font-family: "Hahmlet", serif;
+	  font-optical-sizing: auto;
+	  font-weight: 100;
+	  font-style: normal;
+	  line-height: 1.7rem;
+	}
+	.cormorant-infant {
+	  font-family: "Cormorant Infant", serif;
+	  font-optical-sizing: auto;
+	  font-weight: 300;
+	  font-style: normal;
+	}
+	@font-face {
+    font-family: 'GowunBatang-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunBatang-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+	}
+	body,h1,h2,p,ol,ul{margin:0;padding:0;overflow-x:hidden}
+	nav{font-family: "Cormorant Infant";color:#0060FF; position: fixed; padding: 10px;position: fixed; top:0;left:0;width:100%;z-index: 1000;transition: all 0.3s ease;display: flex;justify-content: space-between;align-items: center;font-size: 1.2rem;background: linear-gradient(to bottom, #6E768D 0%, #73737300 100%)}
+	li{list-style-type: none}
+	.menu{width: 400px; display: flex;gap: 30px;}
+	li a{text-decoration: none; color:white;padding:3px;margin:2px;display: block;transition: all 0.3s;}
+	.menu a {color: #0060FF;text-decoration: none;font-family: 'Cormorant Infant';font-size: 1.2rem;font-weight: 100;}
+	.menu li a:hover {color: white;transition: all 0.3s;}
+	a {cursor:none}
+	.logo{padding: 5px ;color:#0060FF;}
+	.flex{display: flex;justify-content: space-between;}
+	.black {background: black;color:white;position: relative;}
+	.gray {color: #D9D9D9}
+	.wrap{width:1000px; margin:auto}
+	.wrap2{width:1200px; margin:auto}
+	h1{font-family: "Cormorant Infant";color:#0060FF;font-size: 11rem;font-weight: 100;font-style:italic;padding: 0px 10px 0 0;letter-spacing: -0.03em;text-align:right;line-height: 12rem;overflow: hidden;}
+	h2{font-family: 'GowunBatang-Regular';font-size: 6.5rem;font-weight: normal;
+		;letter-spacing: -0.03em;line-height: 10rem;}
+	p{font-family: "Hahmlet";300;font-size: 1.05rem;overflow-y: hidden; line-height: 1.7rem;word-break: keep-all;}
+	section{padding: 150px 0px;border-bottom: 1px solid #444}
+	header{padding:100px 0}
+	.title-wrap {display: flex;gap: 100px;flex-direction: row-reverse; justify-content: space-between;}
+	.title-wrap h2 {padding: 0;margin: 0;text-align: left}
+	.title-wrap p {margin:80px 0 0 30px;font-size: 1rem;line-height: 1.8;max-width: 380px;text-align: left}
+	.bg-pic1{ width: 100%;min-height: 700px;background: url('comp-4.gif') center center / cover no-repeat; background-attachment: fixed;position: relative;overflow: hidden;color:white}
+	.marquee-wrapper {
+		display:flex;
+      	overflow: hidden;
+     	white-space: nowrap;
+      	background-color: black;
+      	color: white;
+      	font-family: "Cormorant Infant",  monospace; font-style:italic; 
+      	font-size: 1.8rem;
+      	padding:20px 0px;
+      	box-shadow: 0 0px 10px black;
+      	border: solid #2A10DF 1px;
+   	}
+   	.marquee {
+      	display:flex;width: fit-content;
+      	animation: marquee 10s linear infinite;
+   	}
+   	.word-group {
+      	display: inline-block;
+      	margin-right: 30px;
+    }
+    @keyframes marquee {
+    	0% {transform: translateX(0);}
+		 100% {transform: translateX(-100%);}
+	}
+	
+	.highlight {position: relative;display: inline-block;z-index: 0;}
+	.highlight::after {
+		 content: '';
+		 position: absolute;
+		 left: 0;
+		 bottom: 0%; 
+		 width: 100%;
+		 height: 30%;
+		 background: linear-gradient(to top, #0060FF 0%, transparent 100%);
+		 z-index: -1;pointer-events: none;
+	}
+	.iamgradient{position: relative;bottom: 0;left: 0;width: 100%;height: 200px;background: linear-gradient(to bottom, black 30%, #2A10DF);z-index: 1;}
+	.enter-button {position: absolute;top: 40%;left: 50%;transform: translate(-50%, -50%);z-index: 3;padding: 8px 18px 10px 18px;font-size: 1.3rem;font-family: 'Hahmlet';font-weight: 200;color: white;background: transparent;border: 0.75px solid white;border-radius: 50px;cursor: none;transition: all 0.3s ease;backdrop-filter: blur(5px);}
+	.enter-button:hover {background: rgba(255, 255, 255, 0.1);color: #ccc;}
+	.transition-overlay {
+		position: fixed;
+		top: 0; left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: black;
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 0.8s ease;
+		z-index: 9999;
+	}
+	.transition-overlay.active {
+		opacity: 1;
+		pointer-events: auto;
+	}
+	.image-wrapper {
+	  position: relative;
+	  height: 1000px;
+	  width: fit-content;
+	  margin: 0 auto;
+	}
+
+	.center-image {
+	  height: 1000px;
+	  display: block;
+	  margin: 0 auto;
+	}
+
+	.dot {
+	  position: absolute;
+	  width: 10px;
+	  height: 10px;
+	  border-radius: 50%;
+	  background: white;
+	  
+	  z-index: 5;
+	  transform: translate(-50%, -50%);animation: glow 2s ease-in-out infinite;
+	}
+	@keyframes glow {
+  0% {
+    box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 12px 6px rgba(255, 255, 255, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.4);
+  }
+}
+	.custom-card {
+	  position: relative;
+	  width: 350px;
+	  padding: 30px;
+	  background: rgba(255, 255, 255, 0.05);
+	  backdrop-filter: blur(3px);
+	  color: white;
+	  font-family: 'Hahmlet';
+	  font-size: 1.05rem;
+	  border: 1px solid rgba(255, 255, 255, 0.5);
+	  margin: 100px auto;
+	  transform: translateY(20px);
+	  z-index: 10;
+	}
+
+	.custom-card .title-row {
+	  display: flex;
+	  align-items: baseline;
+	  gap: 10px;
+	  margin-bottom: 10px;
+	}
+
+	.custom-card .number {
+		font-family: "Cormorant Infant", serif;
+	  color: #0060FF;
+	  font-size: 1.9rem;
+	  font-style: italic;
+	  transform: translateY(-12px);
+	}
+
+	.custom-card .title {
+	  font-size: 2.2rem;
+	  font-family: 'GowunBatang-Regular', serif;
+	  margin-left:80px;margin-top:10px;
+	}
+
+	.custom-card .divider {
+	  height: 1px;
+	  width: 100%;
+	  background: rgba(255, 255, 255, 0.4);
+	  margin: 15px 0 20px;
+	  border: none;
+	}
+
+	.custom-card .image-container {
+	  position: relative;
+	  margin-bottom: 20px;
+	}
+
+	.custom-card .image-container img {
+	  width: 550px;height: auto;margin: -30px 0 -30px -100px;
+	  display: block;
+	}
+
+	.custom-card .image-container::before,
+	.custom-card .image-container::after {
+	  content: '';
+	  position: absolute;
+	  width: 10px;
+	  height: 200px;
+	}
+
+	.custom-card .image-container::before {
+	  top: 50%;
+	  left: 50px;
+	  transform: translateY(-50%);
+	  border-left: 0.3px solid white;
+	  border-top: 0.3px solid white;
+	  border-bottom: 0.3px solid white;
+	}
+
+	.custom-card .image-container::after {
+	  top: 50%;
+	  right: 50px;
+	  transform: translateY(-50%);
+	  border-right: 0.3px solid white;
+	  border-top: 0.3px solid white;
+	  border-bottom: 0.3px solid white;
+	}
+
+	.custom-card::before,
+	.custom-card::after {
+	  content: '';
+	  position: absolute;
+	  width: 60px;
+	  height: 60px;
+	  border: solid white;
+	  z-index: 2;
+	}
+
+	.custom-card::before {
+	  border-width: 4px 0 0 4px;
+	  top: -2px;
+	  left: -2px;
+	}
+
+	.custom-card::after {
+	  border-width: 0 4px 4px 0;
+	  bottom: -2px;
+	  right: -2px;
+	}
+
+	.custom-card .corner-top-right,
+	.custom-card .corner-bottom-left {
+	  content: '';
+	  position: absolute;
+	  width: 60px;
+	  height: 60px;
+	  border: solid white;
+	  z-index: 2;
+	}
+
+	.custom-card .corner-top-right {
+	  border-width: 4px 4px 0 0;
+	  top: -2px;
+	  right: -2px;
+	}
+
+	.custom-card .corner-bottom-left {
+	  border-width: 0 0 4px 4px;
+	  bottom: -2px;
+	  left: -2px;
+	}
+	.wrappp{position: absolute; top: 120px; right: 100px;}
+	.connector {
+    position: absolute;
+    background: white;
+    z-index: 2;
+  }
+  .connector2 {
+  position: absolute;
+  background-color: white;
+  transform: rotate(45deg);
+  transform-origin: top left;
+	}
+	.connector3 {
+	position: absolute;
+  background-color: white;
+  transform: rotate(-55deg);
+  transform-origin: top right;
+	}
+	.hidden {opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;}
+  .show {
+	  opacity: 1;
+	  pointer-events: auto;
+	}
+	.dot-guide-text {
+	  font-size: 1.05rem;
+	  color: #d9d9d9;
+	  padding-left: 290px;margin-top:-50px;margin-bottom:100px;
+	}
+	.custom-card,
+	.connector,
+	.connector2,
+	.connector3 {
+	  opacity: 0;
+	  pointer-events: none;
+	  transition: opacity 0.6s ease, transform 0.6s ease;
+	}
+	.custom-card.show{
+	  opacity: 1;
+	  pointer-events: auto;
+	  transform: translateY(0);
+	}
+	.connector.show,
+	.connector2.show,
+	.connector3.show {
+  opacity: 1;
+  pointer-events: auto;}
+  body {cursor: none;}
+
+	#hollowCursor {
+	  position: fixed;
+	  top: 0;
+	  left: 0;
+	  width: 32px;
+	  height: 32px;
+	  border: 1.5px solid #0060FF;
+	  border-radius: 50%;
+	  pointer-events: none;
+	  transform: translate(-50%, -50%);
+	  z-index: 9999;
+	  box-shadow: 0 0 6px 2px rgba(42, 16, 223, 0.3);
+	  background: transparent;
+	}
+	::selection {background: #2A10DF ;color: inherit;}
+	.close-btn {
+	  color: #0060FF;
+	  font-family: 'Cormorant Infant', serif;
+	  font-style: italic; font-size:1.2rem;
+	  cursor: none;
+	  transition: color 0.3s ease;
+	}
+
+	.close-btn:hover {
+	  color: white;
+	}
+</style>
+<body>
+<div id="hollowCursor"></div>
+	<div class="nav-gradient"></div>
+	<nav>
+		<div class="wrap flex">
+			<div class="logo">
+					DAE
+			</div>
+			<ul class="menu flex">
+				<li><a href="hall1.html">(Hall I)</a></li>
+				<li><a href="hall2.html">(Hall II)</a></li>
+				<li><a href="hall3.html">(Hall III)</a></li>
+				<li><a href="hall4.html">(Hall IV)</a></li>
+			</ul>
+		</div>
+	</nav>
+	<header class="black">
+		<div class="wrap2">
+			<h1>02</h1>
+			<div class="title-wrap">
+			<h2>남아있는 흔적관</h2>
+				<p class="intro-fixed gray">해당 흔적관에는 여러분의 몸 속에 여전히 ‘존재만<br> 하는 것들’이 전시되어 있습니다.</p>
+			</div>
+		</div>
+	</header>
+	<div class="marquee-wrapper">
+	    <div class="marquee">
+	      <span class="word-group">Remaining Traces Hall</span>
+	      <span class="word-group">Remaining Traces Hall</span>
+	      <span class="word-group">Remaining Traces Hall</span>
+	      <span class="word-group">Remaining Traces Hall</span>
+	      <span class="word-group">Remaining Traces Hall</span>
+	    </div> 
+	    <div class="marquee">
+	      <span class="word-group">Remaining Traces Hall</span>
+	      <span class="word-group">Remaining Traces Hall</span>
+	      <span class="word-group">Remaining Traces Hall</span>
+	      <span class="word-group">Remaining Traces Hall</span>
+	      <span class="word-group">Remaining Traces Hall</span>
+	    </div> 
+	    <div class="marquee">
+	      <span class="word-group">Remaining Traces Hall</span>
+	      <span class="word-group">Remaining Traces Hall</span>
+	      <span class="word-group">Remaining Traces Hall</span>
+	      <span class="word-group">Remaining Traces Hall</span>
+	      <span class="word-group">Remaining Traces Hall</span>
+	    </div> 
+	</div>
+	<section class="bg-pic1">
+		<p class="dot-guide-text">인체의 각 부분에 남아있는 흔적을 보려면 점을 클릭하세요.</p>
+		<div class="image-wrapper">
+			<img src="comp-3.gif" class="center-image"alt="image">
+	    <div class="dot"  data-id="1" style="top: 15%; left: 51%;"></div> <!-- 오른쪽 눈 -->
+    	<div class="dot"  data-id="6" style="top: 16.5%; left: 47.5%;"></div> <!-- 왼쪽 귀 -->
+    	<div class="dot"  data-id="2" style="top: 19%; left: 50%;"></div> <!-- 입 -->
+    	<div class="dot"  data-id="4" style="top: 37%; left: 37%;"></div> <!-- 왼쪽 전완근 -->
+    	<div class="dot"  data-id="5" style="top: 40%; left: 52.5%;"></div> <!-- 맹장 -->
+    	<div class="dot"  data-id="3" style="top: 45%; left: 50%;"></div> <!-- 꼬리뼈 -->
+    	<!-- 오른쪽 눈 → 카드 1 -->
+			<div class="connector hidden"  data-id="1" style="top: 150px; left: 51%; height: 0.5px; width: 105px;"></div>
+
+			<!-- 왼쪽 귀 → 카드 6 -->
+			<div class="connector hidden"  data-id="6" style="top: 165px; right: 52.5%; height: 0.5px; width: 133px;"></div>
+
+			<!-- 입 → 카드 2 -->
+			<div class="connector hidden"  data-id="2" style="top: 190px; right: 50%; width: 0.5px; height: 86px;"></div>
+
+			<!-- 왼쪽 전완근 → 카드 4 -->
+			<div class="connector2 hidden"  data-id="4" style="top: 370px; left: 37%; width: 1px; height: 210px;"></div>
+
+			<!-- 맹장 → 카드 5 -->
+			<div class="connector3 hidden"  data-id="5" style="top: 400px; left: 52.5%; width: 1px; height: 267px;"></div>
+
+			<!-- 꼬리뼈 → 카드 3 -->
+			<div class="connector hidden" data-id="3" style="top: 450px; left: 50%; width: 0.5px; height: 100px;"></div>
+	  </div>
+	  <!-- 설명 카드 영역 -->
+			<!-- 카드 HTML -->
+		<!-- 1 -->
+		<div class="custom-card hidden" data-id="1" style="position:absolute; top:-5%; left:57%;">
+		  <div class="corner-top-right"></div>
+		  <div class="corner-bottom-left"></div>
+		  <div class="title-row">
+		    <div class="number">(I)</div>
+		    <div class="title">간상세포</div>
+		  </div>
+		  <div class="divider"></div>
+		  <div class="image-container">
+		    <img src="vision.gif" alt="간상세포">
+		  </div>
+		  <div class="desc">
+		    <p>어둠 속에서 천천히 사물이 보이기 시작할 때, 이는 단순한 적응이 아닌 간상세포의 작용이 일어난 것이라 볼 수 있습니다. <span class="close-btn" onclick="closeCard()"> (→ Close)</span></p>
+		  </div>
+		</div>
+
+		<!-- 2 -->
+		<div class="custom-card hidden"  data-id="2" style="position:absolute; top:29.2%; left:30%;">
+		  <div class="corner-top-right"></div>
+		  <div class="corner-bottom-left"></div>
+		  <div class="title-row">
+		    <div class="number">(II)</div>
+		    <div class="title">제3대구치</div>
+		  </div>
+		  <div class="divider"></div>
+		  <div class="image-container">
+		    <img src="wisdom.gif" alt="제3대구치">
+		  </div>
+		  <div class="desc">
+		    <p>턱이 작아졌음에도 사랑니는 여전히 자람과 동시에 통증과 불균형을 유발합니다. 사람마다 사랑니 개수가 다른 것은 유전 정보가 완전히 사라지지 않았다는 것을 보여줍니다. <span class="close-btn" onclick="closeCard()"> (→ Close)</span></p>
+		  </div>
+		</div>
+
+		<!-- 3 -->
+		<div class="custom-card hidden" data-id="3" style="position:absolute; top:49%; left:39%;">
+		  <div class="corner-top-right"></div>
+		  <div class="corner-bottom-left"></div>
+		  <div class="title-row">
+		    <div class="number">(III)</div>
+		    <div class="title">꼬리뼈</div>
+		  </div>
+		  <div class="divider"></div>
+		  <div class="image-container">
+		    <img src="tail.gif" alt="꼬리뼈">
+		  </div>
+		  <div class="desc">
+		    <p>균형 잡기나 앉을 때 약간의 지지 역할을 합니다. 세게 넘어지면 쉽게 골절되며, 사람에 따라 기형적 돌출 형태로 남는 경우도 있습니다. <span class="close-btn" onclick="closeCard()"> (→ Close)</span></p>
+		  </div>
+		</div>
+
+		<!-- 4 -->
+		<div class="custom-card hidden"  data-id="4" style="position:absolute; top:35%; left:6%;">
+		  <div class="corner-top-right"></div>
+		  <div class="corner-bottom-left"></div>
+		  <div class="title-row">
+		    <div class="number">(IV)</div>
+		    <div class="title">소름 반응</div>
+		  </div>
+		  <div class="divider"></div>
+		  <div class="image-container">
+		    <img src="hair.gif" alt="소름 반응">
+		  </div>
+		  <div class="desc">
+		    <p>피부 아래의 입모근이 수축하며 피부 표면이 오돌토돌해지면 소름 반응이 나타난 것입니다. 과거와 달리 현재에는 별다른 기능 없이 반사적으로 작동하곤 합니다. <span class="close-btn" onclick="closeCard()"> (→ Close)</span></p>
+		  </div>
+		</div>
+
+		<!-- 5 -->
+		<div class="custom-card hidden"  data-id="5" style="position:absolute; top:41%; left:65%;">
+		  <div class="corner-top-right"></div>
+		  <div class="corner-bottom-left"></div>
+		  <div class="title-row">
+		    <div class="number">(V)</div>
+		    <div class="title">맹장</div>
+		  </div>
+		  <div class="divider"></div>
+		  <div class="image-container">
+		    <img src="ap.gif" alt="맹장">
+		  </div>
+		  <div class="desc">
+		    <p>식물성 섬유를 분해하던 소화기관의 흔적으로서, 기능은 사라졌지만 장 속에 여전히 남아 염증을 유발하고는 합니다. 이는 진화 중단의 표본이라 할 수 있습니다. <span class="close-btn" onclick="closeCard()"> (→ Close)</span></p>
+		  </div>
+		</div>
+
+		<!-- 6 -->
+		<div class="custom-card hidden"  data-id="6" style="position:absolute; top:-1%; left:16%;">
+		  <div class="corner-top-right"></div>
+		  <div class="corner-bottom-left"></div>
+		  <div class="title-row">
+		    <div class="number">(VI)</div>
+		    <div class="title">외이근</div>
+		  </div>
+		  <div class="divider"></div>
+		  <div class="image-container">
+		    <img src="ear.gif" alt="외이근">
+		  </div>
+		  <div class="desc">
+		    <p>귀를 움직이게 하는 전이개근, 상이개근, 후이개근이 존재합니다. 하지만 머리를 돌려 소리를 감지하게 되면서 이 근육들은 거의 사용되지 않게 되었습니다. <span class="close-btn" onclick="closeCard()"> (→ Close)</span></p>
+		  </div>
+		</div>
+	</section>
+	<div class="marquee-wrapper">
+	    <div class="marquee">
+	      <span class="word-group">Remaining Traces Hall</span>
+	      <span class="word-group">Remaining Traces Hall</span>
+	      <span class="word-group">Remaining Traces Hall</span>
+	      <span class="word-group">Remaining Traces Hall</span>
+	      <span class="word-group">Remaining Traces Hall</span>
+	    </div> 
+	    <div class="marquee">
+	      <span class="word-group">Remaining Traces Hall</span>
+	      <span class="word-group">Remaining Traces Hall</span>
+	      <span class="word-group">Remaining Traces Hall</span>
+	      <span class="word-group">Remaining Traces Hall</span>
+	      <span class="word-group">Remaining Traces Hall</span>
+	    </div> 
+	    <div class="marquee">
+	      <span class="word-group">Remaining Traces Hall</span>
+	      <span class="word-group">Remaining Traces Hall</span>
+	      <span class="word-group">Remaining Traces Hall</span>
+	      <span class="word-group">Remaining Traces Hall</span>
+	      <span class="word-group">Remaining Traces Hall</span>
+	    </div> 
+	</div>
+	<div class="iamgradient">
+		<button class="enter-button" onclick="goToNextPage()">제3전시관 가기 &nbsp;></button>
+	</div>
+	<div class="transition-overlay"></div>
+</body>
+<script>
+  function goToNextPage() {
+    window.location.href = 'hall3.html';
+  }
+  function goToNextPage() {
+    const overlay = document.querySelector('.transition-overlay');
+    overlay.classList.add('active'); 
+    setTimeout(() => {
+      window.location.href = "hall3.html";
+    }, 800);
+  }
+</script>
+<script>
+  function showCard(index) {
+    document.querySelectorAll('.custom-card, .connector, .connector2, .connector3').forEach((el) => {
+      el.classList.add('hidden');
+      el.classList.remove('show');
+    });
+
+    const card = document.querySelector(`.custom-card[data-id="${index}"]`);
+    if (card) {
+      card.classList.remove('hidden');
+      card.classList.add('show');
+    }
+
+    const connector = document.querySelector(`.connector[data-id="${index}"]`);
+    if (connector) {
+      connector.classList.remove('hidden');
+      connector.classList.add('show');
+    }
+
+    const connector2 = document.querySelector(`.connector2[data-id="${index}"]`);
+    if (connector2) {
+      connector2.classList.remove('hidden');
+      connector2.classList.add('show');
+    }
+
+    const connector3 = document.querySelector(`.connector3[data-id="${index}"]`);
+    if (connector3) {
+      connector3.classList.remove('hidden');
+      connector3.classList.add('show');
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.dot').forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const index = dot.getAttribute('data-id');
+        showCard(index);
+      });
+    });
+  });
+
+  function closeCard() {
+    document.querySelectorAll('.custom-card, .connector, .connector2, .connector3').forEach((el) => {
+      el.classList.add('hidden');
+      el.classList.remove('show');
+    });
+  }
+</script>
+<script>
+  const hollowCursor = document.getElementById('hollowCursor');
+
+  document.addEventListener('mousemove', (e) => {
+    hollowCursor.style.top = `${e.clientY}px`;
+    hollowCursor.style.left = `${e.clientX}px`;
+  });
+  const links = document.querySelectorAll('.menu a');
+  const overlay = document.querySelector('.transition-overlay');
+
+  links.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const href = this.getAttribute('href');
+
+      overlay.classList.add('active');
+      setTimeout(() => {
+        window.location.href = href;
+      }, 800);
+    });
+  });
+  window.addEventListener('DOMContentLoaded', () => {
+	  const overlay = document.querySelector('.transition-overlay');
+
+	  
+	  overlay.classList.add('active');
+
+	  
+	  setTimeout(() => {
+	    overlay.classList.remove('active');
+	  }, 100);
+	});
+	function closeCard() {
+  document.querySelectorAll('.custom-card, .connector, .connector2, .connector3').forEach((el) => {
+    el.classList.add('hidden');
+    el.classList.remove('show');
+  });
+}
+</script>
+</html>
